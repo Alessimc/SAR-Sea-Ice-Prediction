@@ -1,0 +1,23 @@
+defaults:
+  model_module: model_dev_main.src.models.Unet
+  model_class: UNet_4layers
+
+  normalize_y: true
+  out_ch: 2
+
+  sar_channels: ["HH", "HV", "IA"]
+  sar_to_db: true
+  sar_postprocess: true
+  sar_zero_is_nodata: false
+
+  sar_clip_db: true
+  sar_clip_db_bounds:
+    HH: [-18.88, -7.12]
+    HV: [-34.88, -17.88]
+
+models:
+  - label: "All predictors (MSE+Div)"
+    ckpt: model_dev_main/runs/best_model/unet_4layers_drift_wFutureWind_SAR_all_base16_lr3e-4_bs16_wDivLoss_masked/checkpoints/best_val.pt
+    test_index: model_dev_main/index_files/min400PM_wind_drift_SAR_dataset/index_test.jsonl
+    norm_yaml: model_dev_main/index_files/min400PM_wind_drift_SAR_dataset/norm_stats_train.yaml
+    base_channels: 16

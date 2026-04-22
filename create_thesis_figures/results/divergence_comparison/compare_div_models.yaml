@@ -1,0 +1,43 @@
+defaults:
+  model_module: model_dev_main.src.models.Unet
+  model_class: UNet_4layers
+
+  normalize_y: true
+  out_ch: 2
+
+  sar_channels: ["HH", "HV", "IA"]
+  sar_to_db: true
+  sar_postprocess: true
+  sar_zero_is_nodata: false
+
+  sar_clip_db: true
+  sar_clip_db_bounds:
+    HH: [-18.88, -7.12]
+    HV: [-34.88, -17.88]
+
+models:
+  - label: "Wind-only (MSE)"
+    ckpt: model_dev_main/runs/min400PM_experiments/unet_4layers_wFutureWind_base16_lr1e-4_bs16/checkpoints/best_val.pt
+    val_index: model_dev_main/index_files/min400PM_wind_drift_SAR_dataset/index_val.jsonl
+    norm_yaml: model_dev_main/index_files/min400PM_wind_drift_SAR_dataset/norm_stats_train.yaml
+    base_channels: 16
+    input_channel_names: ["future_wind_u10_mean", "future_wind_v10_mean"]
+
+  - label: "Wind-only (MSE+Div)"
+    ckpt: model_dev_main/runs/min400PM_experiments/DivLoss/unet_4layers_wFutureWind_base16_lr1e-4_bs16_wDivLoss_masked.yaml/checkpoints/best_val.pt
+    val_index: model_dev_main/index_files/min400PM_wind_drift_SAR_dataset/index_val.jsonl
+    norm_yaml: model_dev_main/index_files/min400PM_wind_drift_SAR_dataset/norm_stats_train.yaml
+    base_channels: 16
+    input_channel_names: ["future_wind_u10_mean", "future_wind_v10_mean"]
+
+  - label: "All predictors (MSE)"
+    ckpt: model_dev_main/runs/min400PM_experiments/unet_4layers_drift_wFutureWind_SAR_all_base16_lr1e-4_bs16/checkpoints/best_val.pt
+    val_index: model_dev_main/index_files/min400PM_wind_drift_SAR_dataset/index_val.jsonl
+    norm_yaml: model_dev_main/index_files/min400PM_wind_drift_SAR_dataset/norm_stats_train.yaml
+    base_channels: 16
+
+  - label: "All predictors (MSE+Div)"
+    ckpt: model_dev_main/runs/min400PM_experiments/DivLoss/unet_4layers_drift_wFutureWind_SAR_all_base16_lr1e-4_bs16_wDivLoss_masked.yaml/checkpoints/best_val.pt
+    val_index: model_dev_main/index_files/min400PM_wind_drift_SAR_dataset/index_val.jsonl
+    norm_yaml: model_dev_main/index_files/min400PM_wind_drift_SAR_dataset/norm_stats_train.yaml
+    base_channels: 16
