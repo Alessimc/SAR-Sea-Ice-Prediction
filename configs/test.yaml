@@ -1,0 +1,31 @@
+data: # data paths, vaiables, splits etc.
+  root:
+  splits:
+    train: ["2014-01-01", "2018-12-31"]
+    val:   ["2019-01-01", "2019-12-31"]
+    test:  ["2020-01-01", "2020-12-31"]
+
+training: # traning paramteres such as batch size, epochs, learning rate etc.
+  batch_size: 32
+  epochs: 100
+  learning_rate: 0.001
+  optimizer: "adam"
+  loss_function: "mse"
+
+model: # model architecture and hyperparameters
+
+logging: # logging and checkpointing settings
+  log_dir: "./outputs/logs"
+  checkpoint_dir: "./outputs/checkpoints"
+  save_best_only: true
+  monitor: "val_loss"
+  mode: "min"
+
+valuation: # evaluation metrics and frequency
+  metrics: ["rmse", "mae", "ssim", "anomaly_correlation"]
+  eval_frequency: 1
+
+reproducibility: # settings for reproducibility
+  seed: 42
+  num_workers: 4
+  deterministic: true

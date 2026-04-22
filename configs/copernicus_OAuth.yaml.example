@@ -1,0 +1,11 @@
+# Copernicus Dataspace OAuth credentials
+# Copy this file to copernicus_OAuth.yaml and fill in your own credentials.
+# Register at: https://dataspace.copernicus.eu/
+# Create OAuth clients at: https://shapps.dataspace.copernicus.eu/dashboard/#/account/settings
+
+client_id1: 'your-client-id-here'
+client_secret1: 'your-client-secret-here'
+
+# Add more accounts for parallel downloading (optional):
+# client_id2: 'your-second-client-id'
+# client_secret2: 'your-second-client-secret'

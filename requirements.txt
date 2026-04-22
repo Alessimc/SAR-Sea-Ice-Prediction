@@ -1,0 +1,17 @@
+torch>=2.0
+numpy
+scipy
+pandas
+xarray
+rioxarray
+rasterio
+pyproj
+affine
+sentinelhub
+requests
+requests-oauthlib
+oauthlib
+shapely
+matplotlib
+pyyaml
+tqdm
