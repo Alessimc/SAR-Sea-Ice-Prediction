@@ -1,0 +1,32 @@
+experiment_name: unet_4layers_drift_wFutureWind_base64_lr1e-4_bs4
+
+paths:
+  train_index: model_dev_main/index_files/full_wind_drift_dataset/index_train.jsonl
+  val_index:   model_dev_main/index_files/full_wind_drift_dataset/index_val.jsonl
+  norm_yaml:   model_dev_main/index_files/full_wind_drift_dataset/norm_stats_train.yaml
+
+model:
+  module: model_dev_main.src.models.Unet
+  class_name: UNet_4layers
+  base_channels: 64
+  include_wspd: false
+  in_ch: 4     # future_wind_u10, future_wind_v10, past_drift_u, past_drift_v
+  out_ch: 2   # future_drift_u, future_drift_v
+
+train:
+  epochs: 100
+  batch_size: 4
+  lr: 1e-4
+  weight_decay: 0.0
+  num_workers: 4
+  amp: true
+  seed: 0
+  normalize_y: true
+
+early_stopping:
+  patience: 15
+  min_delta: 1e-4
+
+runs_root: model_dev_main/runs
+
+# running at 25756MiB memory usage with batch size 4

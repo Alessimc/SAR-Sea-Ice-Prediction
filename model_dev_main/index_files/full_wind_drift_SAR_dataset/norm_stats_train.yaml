@@ -1,0 +1,50 @@
+inputs:
+  past_drift_u:
+    mean: -0.02881874
+    std: 0.1021615
+  past_drift_v:
+    mean: 0.02347004
+    std: 0.1003168
+  future_wind_u10_mean:
+    mean: -1.037889
+    std: 4.036151
+  future_wind_v10_mean:
+    mean: 0.6419797
+    std: 4.146657
+  sar_hh_db:
+    mean: -12.75935
+    std: 2.660326
+  sar_hv_db:
+    mean: -24.84739
+    std: 3.856527
+  sar_incidence_angle:
+    mean: 29.80715
+    std: 6.316714
+
+targets:
+  future_drift_u:
+    mean: -0.02759497
+    std: 0.1018049
+  future_drift_v:
+    mean: 0.01877308
+    std: 0.1017595
+
+meta:
+  index_path: /path/to/project/model_dev_main/index_files/full_wind_drift_SAR_dataset/index_train.jsonl
+  dataset_len: null
+  batch_size: 4
+  num_workers: 4
+  max_batches: null
+  device_used_for_stats: cpu
+  pixel_weighted: true
+  include_wspd: false
+  sar_channels:
+    - HH
+    - HV
+    - IA
+  sar_to_db: true
+  x_num_channels: 7
+  y_num_channels: 2
+  x_total_pixels_per_channel_accumulated: null
+  y_total_pixels_per_channel_accumulated: null
+  created_utc: null

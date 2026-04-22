@@ -1,0 +1,33 @@
+inputs:
+  past_drift_u:
+    mean: -0.02881874330341816
+    std: 0.1021614596247673
+  past_drift_v:
+    mean: 0.023470038548111916
+    std: 0.10031682252883911
+  future_wind_u10_mean:
+    mean: -1.0378888845443726
+    std: 4.03615140914917
+  future_wind_v10_mean:
+    mean: 0.6419796943664551
+    std: 4.146656513214111
+targets:
+  future_drift_u:
+    mean: -0.027594972401857376
+    std: 0.10180491209030151
+  future_drift_v:
+    mean: 0.018773075193166733
+    std: 0.10175951570272446
+meta:
+  index_path: /path/to/project/model_dev_main/index_files/full_wind_drift_dataset/index_train.jsonl
+  dataset_len: 7884
+  batch_size: 4
+  num_workers: 4
+  max_batches: null
+  device_used_for_stats: cpu
+  pixel_weighted: true
+  x_num_channels: 4
+  y_num_channels: 2
+  x_total_pixels_per_channel_accumulated: 8266973184
+  y_total_pixels_per_channel_accumulated: 8266973184
+  created_utc: '2026-01-28T13:07:46.433696Z'

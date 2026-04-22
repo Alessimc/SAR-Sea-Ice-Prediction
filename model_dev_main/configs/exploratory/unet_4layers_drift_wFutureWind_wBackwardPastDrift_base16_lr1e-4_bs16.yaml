@@ -1,0 +1,43 @@
+experiment_name: unet_4layers_drift_wFutureWind_wBackwardPastDrift_base16_lr1e-4_bs16
+
+paths:
+  train_index: model_dev_main/index_files/full_wind_drift_SAR_dataset_wBackwardPastDrift/index_train.jsonl
+  val_index:   model_dev_main/index_files/full_wind_drift_SAR_dataset_wBackwardPastDrift/index_val.jsonl
+  norm_yaml:   model_dev_main/index_files/full_wind_drift_SAR_dataset_wBackwardPastDrift/norm_stats_train.yaml
+
+data:
+  include_wspd: false
+  sar_channels: []
+  # sar_to_db: true
+
+  # NEW: SAR-only postprocessing (applies only to SAR HH/HV)
+  # sar_postprocess: true
+  # sar_clip_percentiles: [0.01, 0.99]   # 1st–99th percentile (in quantile form)
+  # sar_zero_is_nodata: true             # recommended if zeros are nodata in SAR HH/HV
+
+  cache_size_train: 32
+  cache_size_val: 0
+  prefetch_factor: 4
+
+model:
+  module: model_dev_main.src.models.Unet
+  class_name: UNet_4layers # not actully res!
+  base_channels: 16
+  # in_ch is inferred from dataset
+  out_ch: 2
+
+train:
+  epochs: 100
+  batch_size: 16
+  lr: 1e-4
+  weight_decay: 0.0
+  num_workers: 4
+  amp: true
+  seed: 0
+  normalize_y: true
+
+early_stopping:
+  patience: 15
+  min_delta: 1e-4
+
+runs_root: model_dev_main/runs

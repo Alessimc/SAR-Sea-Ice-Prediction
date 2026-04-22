@@ -1,0 +1,64 @@
+inputs:
+  past_drift_u:
+    mean: 0.033248890191316605
+    std: -0.08899138122797012 # NB! sign flipped to invert past drift direction
+  past_drift_v:
+    mean: -0.02903466299176216
+    std: -0.09103225916624069 # NB! sign flipped to invert past drift direction
+  future_wind_u10_mean:
+    mean: -1.2444154024124146
+    std: 3.806849479675293
+  future_wind_v10_mean:
+    mean: 0.892246425151825
+    std: 3.9202709197998047
+  sar_hh_db:
+    mean: -12.813227653503418
+    std: 2.481920003890991
+  sar_hv_db:
+    mean: -24.718791961669922
+    std: 3.3513803482055664
+  sar_incidence_angle:
+    mean: 29.544021606445312
+    std: 6.682606220245361
+targets:
+  future_drift_u:
+    mean: -0.034214381128549576
+    std: 0.0903046727180481
+  future_drift_v:
+    mean: 0.023520417511463165
+    std: 0.09226881712675095
+meta:
+  index_path: /path/to/project/model_dev_main/index_files/min400PM_wind_drift_SAR_dataset_wBackwardPastDrift/index_train.jsonl
+  dataset_len: 5647
+  batch_size: 4
+  num_workers: 4
+  max_batches: null
+  device_used_for_stats: cpu
+  pixel_weighted: true
+  include_wspd: false
+  sar_channels:
+  - HH
+  - HV
+  - IA
+  sar_to_db: true
+  sar_clip_db_enabled: true
+  sar_clip_hh_db:
+  - -18.88
+  - -7.12
+  sar_clip_hv_db:
+  - -34.88
+  - -17.88
+  x_num_channels: 7
+  y_num_channels: 2
+  x_total_pixels_per_channel_accumulated:
+  - 5921308672
+  - 5921308672
+  - 5921308672
+  - 5921308672
+  - 5881528832
+  - 5881528832
+  - 5921308672
+  y_total_pixels_per_channel_accumulated:
+  - 5921308672
+  - 5921308672
+  created_utc: '2026-02-24T16:56:24.006256Z'
