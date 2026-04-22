@@ -1,0 +1,48 @@
+# === Credentials and site-specific config (NEVER commit) ===
+configs/copernicus_OAuth.yaml
+configs/data_paths.yaml
+configs/data_paths_PPI.yaml
+
+# === Internal AI assistant instructions (not for public repos) ===
+.github/copilot-instructions.md
+
+# === HPC cluster job scripts (cluster-specific – not portable) ===
+*_on_PPI.sh
+
+# === Model checkpoints and large binary outputs ===
+*.pt
+model_dev_main/runs/
+
+# === Generated dataset index files (contain absolute cluster paths) ===
+model_dev_main/index_files/**/*.jsonl
+AROME_datahandling/index_test*.jsonl
+src/data_creation/vector_dataset/*.jsonl
+src/data_creation/vector_dataset/paired*.csv
+
+# === Buoy validation script output ===
+output_IABP_validation/
+
+# === Python cache ===
+__pycache__/
+*.py[cod]
+*.pyo
+.pytest_cache/
+
+# === Jupyter notebook outputs ===
+.ipynb_checkpoints/
+
+# === Virtual environments ===
+.venv/
+venv/
+env/
+
+# === Figures and documents ===
+*.pdf
+*.png
+
+# === Editor / OS ===
+.DS_Store
+*.swp
+*.swo
+.idea/
+.vscode/settings.json
