@@ -1,0 +1,13 @@
+{
+  "fit_dataset": "model_dev_main/index_files/min400PM_wind_drift_SAR_dataset/index_train.jsonl",
+  "n_pixels_used": 5932843008,
+  "A": 0.021028168933290035,
+  "B": 0.007755207239116965,
+  "alpha": 0.02241265553227989,
+  "theta_rad": 0.35332478130738004,
+  "theta_deg": 20.244018766295678,
+  "model_equations": {
+    "u_ice": "A * u_wind - B * v_wind",
+    "v_ice": "B * u_wind + A * v_wind"
+  }
+}

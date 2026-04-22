@@ -1,0 +1,30 @@
+{
+  "config": "model_dev_main/runs/best_model/unet_4layers_drift_wFutureWind_SAR_all_base16_lr3e-4_bs16_wDivLoss_masked/config_used.yaml",
+  "index_file": "model_dev_main/index_files/min400PM_wind_drift_SAR_dataset/index_val.jsonl",
+  "baseline": "persistence",
+  "denorm": true,
+  "dx": 100.0,
+  "dy": 100.0,
+  "angle_eps": 0.02,
+  "div_true_abs_quantile": 0.9,
+  "div_true_abs_threshold_est": 9.003653644867882e-07,
+  "n_pixels_vector": 1126170624,
+  "n_pixels_divergence": 1121775816,
+  "top_subset_pixels": 111587707,
+  "top_subset_fraction": 0.09947415999561894,
+  "metrics": {
+    "rmse_u": 0.0753311574837196,
+    "rmse_v": 0.08473197722248825,
+    "rmse_speed": 0.07638817528476724,
+    "mae_speed": 0.05879341842159213,
+    "mean_abs_angle_deg": 44.32726045692519,
+    "rmse_divergence": 1.2645335392232213e-05,
+    "pearson_speed": 0.4389313949690002,
+    "pearson_divergence": 0.00019720162860183932,
+    "mse_vector_model": 0.006427145625934615,
+    "mse_vector_persistence": 0.006427145625934615,
+    "skill_vs_persistence": 0.0,
+    "rmse_divergence_top10_true": 3.0406105580869937e-05,
+    "pearson_divergence_top10_true": 0.00044808086640581683
+  }
+}
