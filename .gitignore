@@ -1,9 +1,9 @@
-# === Credentials and site-specific config (NEVER commit) ===
+# === Credentials and site-specific config ===
 configs/copernicus_OAuth.yaml
 configs/data_paths.yaml
 configs/data_paths_PPI.yaml
 
-# === Internal AI assistant instructions (not for public repos) ===
+# === Internal AI assistant instructions ===
 .github/copilot-instructions.md
 
 # === HPC cluster job scripts (cluster-specific – not portable) ===
@@ -39,6 +39,8 @@ env/
 # === Figures and documents ===
 *.pdf
 *.png
+*.npz
+*.csv
 
 # === Editor / OS ===
 .DS_Store
