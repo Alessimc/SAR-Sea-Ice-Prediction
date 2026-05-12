@@ -1,5 +1,7 @@
 # SAR Sea Ice Drift Prediction
 
+> **Disclaimer:** This code is provided as-is. It was developed to run on the Met Norway PPI HPC cluster and relies on data paths and resources specific to that environment. Many of those paths are not included in this repository. There are therefore no guarantees of portability or out-of-the-box reproducibility on other systems.
+
 A U-Net model for predicting 24-hour Arctic sea ice drift velocity fields from Sentinel-1 SAR imagery and CARRA reanalysis wind. Developed as part of a master's thesis at the University of Oslo / Met Norway.
 
 **Inputs:** past SAR-derived drift (24 h backward context), 24 h mean future wind (CARRA or AROME-Arctic), SAR backscatter (HH, HV, incidence angle).  
@@ -37,6 +39,15 @@ The full pipeline goes from raw Sentinel-1 downloads to a trained model:
 8. **Compute normalisation statistics** over the training set
 9. **Train** the U-Net (`model_dev_main/src/train/train_wind_drift_SAR.py`)
 10. **Evaluate** on validation/test sets (`model_dev_main/src/inference/`)
+
+---
+
+## Setup
+
+```bash
+python -m venv .venv && source .venv/bin/activate
+pip install -r requirements.txt
+```
 
 ---
 
