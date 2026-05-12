@@ -127,14 +127,14 @@ def plot_combined(cu, cv, cspd, au, av, aspd):
     setup_pub_style(fontsize=9)
 
     panels = [
-        (cu, au, r"$u_{10}$  [m s$^{-1}$]"),
-        (cv, av, r"$v_{10}$  [m s$^{-1}$]"),
-        (cspd, aspd, r"wind speed  [m s$^{-1}$]"),
+        (cu, au, r"$u_{10}$  [m s$^{-1}$]", "(a)"),
+        (cv, av, r"$v_{10}$  [m s$^{-1}$]", "(b)"),
+        (cspd, aspd, r"wind speed  [m s$^{-1}$]", "(c)"),
     ]
 
     fig, axes = plt.subplots(1, 3, figsize=fig_textwidth(height_ratio=0.4), sharey=True)
 
-    for ax, (cvals, avals, xlabel) in zip(axes, panels):
+    for ax, (cvals, avals, xlabel, title) in zip(axes, panels):
         bins = np.linspace(
             min(cvals.min(), avals.min()),
             max(cvals.max(), avals.max()),
@@ -143,6 +143,7 @@ def plot_combined(cu, cv, cspd, au, av, aspd):
         ax.hist(cvals, bins=bins, density=True, alpha=0.6, color="#1f77b4", label="CARRA")
         ax.hist(avals, bins=bins, density=True, alpha=0.6, color="#d62728", label="AROME-Arctic")
         ax.set_xlabel(xlabel)
+        ax.set_title(title, loc="left")
 
     axes[0].set_ylabel("Density")
     axes[0].legend(frameon=True)

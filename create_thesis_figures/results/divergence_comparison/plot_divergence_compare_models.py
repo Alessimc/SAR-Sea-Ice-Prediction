@@ -758,35 +758,35 @@ def main():
         div_axes = []
 
         im = plot_div_faces_symlog(
-            axes[0], tri_info, div_target, "Target divergence", vlim=vlim, linthresh=linthresh
+            axes[0], tri_info, div_target, "(a) Target", vlim=vlim, linthresh=linthresh
         )
         div_axes.append(axes[0])
 
         plot_div_faces_symlog(
-            axes[1], tri_info, wind_div, wind_div_label, vlim=vlim, linthresh=linthresh
+            axes[1], tri_info, wind_div, f"(b) {wind_div_label}", vlim=vlim, linthresh=linthresh
         )
         div_axes.append(axes[1])
 
         plot_div_faces_symlog(
-            axes[2], tri_info, wind_mse, wind_mse_label, vlim=vlim, linthresh=linthresh
+            axes[2], tri_info, wind_mse, f"(c) {wind_mse_label}", vlim=vlim, linthresh=linthresh
         )
         div_axes.append(axes[2])
 
         if sar_bundle is not None and sar_channel_resolved is not None:
             sar_img = extract_sar_image(sar_bundle, idx, sar_channel=sar_channel_resolved)
-            plot_sar(axes[3], sar_img, tri_info, title="SAR HH")
+            plot_sar(axes[3], sar_img, tri_info, title=f"(d) SAR HH")
         else:
-            axes[3].text(0.5, 0.5, f"SAR {args.sar_channel}\nnot available", ha="center", va="center")
+            axes[3].text(0.5, 0.5, f"(d) SAR {args.sar_channel}\nnot available", ha="center", va="center")
             axes[3].set_xticks([])
             axes[3].set_yticks([])
 
         plot_div_faces_symlog(
-            axes[4], tri_info, all_div, all_div_label, vlim=vlim, linthresh=linthresh
+            axes[4], tri_info, all_div, f"(e) {all_div_label}", vlim=vlim, linthresh=linthresh
         )
         div_axes.append(axes[4])
 
         plot_div_faces_symlog(
-            axes[5], tri_info, all_mse, all_mse_label, vlim=vlim, linthresh=linthresh
+            axes[5], tri_info, all_mse, f"(f) {all_mse_label}", vlim=vlim, linthresh=linthresh
         )
         div_axes.append(axes[5])
 

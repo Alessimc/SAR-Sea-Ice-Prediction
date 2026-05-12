@@ -1011,18 +1011,18 @@ def main():
             ax.set_box_aspect(1)
 
         im_vel = plot_vector_field_with_bg(
-            ax_tvec, target_u, target_v, tri_info, "Target",
+            ax_tvec, target_u, target_v, tri_info, "(a) Target",
             dx=args.dx, dy=args.dy, stride=args.quiver_stride,
             quiver_scale=quiver_scale, bg_vmin=0.0, bg_vmax=vel_vmax,
             key_value=(speed_ref if args.show_quiver_key else None),
         )
         plot_vector_field_with_bg(
-            ax_bvec, base_u, base_v, tri_info, "Wind baseline",
+            ax_bvec, base_u, base_v, tri_info, "(b) Wind baseline",
             dx=args.dx, dy=args.dy, stride=args.quiver_stride,
             quiver_scale=quiver_scale, bg_vmin=0.0, bg_vmax=vel_vmax,
         )
         plot_vector_field_with_bg(
-            ax_mvec, ml_u, ml_v, tri_info, f"U-Net",
+            ax_mvec, ml_u, ml_v, tri_info, "(c) U-Net",
 
             dx=args.dx, dy=args.dy, stride=args.quiver_stride,
             quiver_scale=quiver_scale, bg_vmin=0.0, bg_vmax=vel_vmax,
@@ -1032,22 +1032,22 @@ def main():
 
         im_sar = plot_sar(
             ax_sar0, sar_end, tri_info,
-            title=r"SAR at $t_0 + \Delta t$",
+            title=r"(d) SAR at $t_0 + \Delta t$",
             vmin=sar_vmin, vmax=sar_vmax
         )
         plot_sar(
             ax_sar_b, sar_warp_base, tri_info,
-            title=r"Warped SAR from $t_0$",
+            title=r"(e) Warped SAR from $t_0$",
             vmin=sar_vmin, vmax=sar_vmax
         )
         plot_sar(
             ax_sar_m, sar_warp_ml, tri_info,
-            title=r"Warped SAR from $t_0$",
+            title=r"(f) Warped SAR from $t_0$",
             vmin=sar_vmin, vmax=sar_vmax
         )
         cbar_sar = fig1.colorbar(im_sar, cax=cax_sar)
         if "db" in args.sar_channel.lower():
-            cbar_sar.set_label("SAR [dB]")
+            cbar_sar.set_label("HH backscatter [dB]")
         else:
             cbar_sar.set_label("SAR")
 
@@ -1096,30 +1096,30 @@ def main():
         shear_norm = Normalize(vmin=0.0, vmax=shear_vmax)
 
         im_div = plot_tripcolor_faces(
-            ax_tdiv, tri_info, div_target, "Target",
+            ax_tdiv, tri_info, div_target, "(a) Target",
             cmap="RdBu_r", norm=div_norm
         )
         plot_tripcolor_faces(
-            ax_bdiv, tri_info, div_base, "Wind baseline",
+            ax_bdiv, tri_info, div_base, "(b) Wind baseline",
             cmap="RdBu_r", norm=div_norm
         )
         plot_tripcolor_faces(
-            ax_mdiv, tri_info, div_ml, f"U-Net",
+            ax_mdiv, tri_info, div_ml, "(c) U-Net",
             cmap="RdBu_r", norm=div_norm
         )
         cbar_div = fig2.colorbar(im_div, cax=cax_div)
         cbar_div.set_label("Divergence [1/day]")
 
         im_shr = plot_tripcolor_faces(
-            ax_tshr, tri_info, shear_target, "Target",
+            ax_tshr, tri_info, shear_target, "(d) Target",
             cmap="magma", norm=shear_norm
         )
         plot_tripcolor_faces(
-            ax_bshr, tri_info, shear_base, "Wind baseline",
+            ax_bshr, tri_info, shear_base, "(e) Wind baseline",
             cmap="magma", norm=shear_norm
         )
         plot_tripcolor_faces(
-            ax_mshr, tri_info, shear_ml, f"U-Net",
+            ax_mshr, tri_info, shear_ml, "(f) U-Net",
             cmap="magma", norm=shear_norm
         )
         cbar_shr = fig2.colorbar(im_shr, cax=cax_shr)
